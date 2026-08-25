@@ -1,0 +1,93 @@
+[project]
+name = "qvac-nmt"
+version = "0.1.0"
+description = "Pure-PyTorch inference for Bergamot-recipe Marian NMT models (TranslatePsy-Nano: EuroNano / AfriNano). Loads Marian .npz checkpoints directly; no bergamot or marian C++ runtime required."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Akshay" }]
+keywords = [
+    "translation",
+    "nmt",
+    "marian",
+    "bergamot",
+    "qvac",
+    "translatepsy",
+    "euronano",
+    "afrinano",
+    "pytorch",
+    "ssru",
+    "transformer",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Text Processing :: Linguistic",
+]
+dependencies = [
+    "torch>=2.1",
+    "numpy>=1.24",
+    "sentencepiece>=0.1.99",
+    "pyyaml>=6.0",
+]
+
+[project.urls]
+Homepage     = "https://github.com/tetherto/qvac-research-translations-nmt"
+Repository   = "https://github.com/tetherto/qvac-research-translations-nmt"
+Issues       = "https://github.com/tetherto/qvac-research-translations-nmt/issues"
+
+[project.optional-dependencies]
+# Pulled in only by tests/test_real_checkpoints.py and the
+# scripts/fetch_real_models.py helper.
+hf = ["huggingface-hub>=0.20"]
+
+[project.scripts]
+qvac-translate = "qvac_nmt.cli_translate:main"
+qvac-convert   = "qvac_nmt.cli_convert:main"
+afritranslate  = "qvac_nmt._afritranslate_cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["qvac_nmt"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+    "ruff>=0.6",
+    "huggingface-hub>=0.20",
+]
+
+[tool.ruff]
+line-length    = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E501",  # line-length is enforced by formatter, not linter
+    "B008",  # function call in default arg (we don't use this; keeps Config defaults clean)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B011"]  # asserts in tests are fine
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts   = "-q"

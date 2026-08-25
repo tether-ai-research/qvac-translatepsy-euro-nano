@@ -1,0 +1,26 @@
+# Python build / cache
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+.uv/
+uv.lock
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+
+# Environment files (never commit secrets)
+.env
+.env.*
+
+# Model files: large; users place them under models/ themselves.
+models/**/*.npz
+models/**/*.spm
+!models/.gitkeep
