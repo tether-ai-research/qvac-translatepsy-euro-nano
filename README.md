@@ -245,6 +245,4 @@ QVAC_NMT_REAL_MODELS_DIR=real_models uv run pytest tests/test_real_checkpoints.p
 CI runs the synthetic suite on Python 3.10 / 3.11 / 3.12 plus a wheel-import smoke test. The integration suite runs on push to `main` if the repo has an `HF_TOKEN` secret configured. See `.github/workflows/ci.yml` and `[CONTRIBUTING.md](CONTRIBUTING.md)`.
 
 ## License
-
-Code: Apache-2.0 (see `[LICENSE](LICENSE)`).
-Model weights and tokenizers: see the license bundled with each checkpoint you use.
+TranslatePsy-EuroNano is released under the **Apache License 2.0**.
