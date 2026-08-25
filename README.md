@@ -246,5 +246,5 @@ CI runs the synthetic suite on Python 3.10 / 3.11 / 3.12 plus a wheel-import smo
 
 ## License
 
-Code: MIT (see `[LICENSE](LICENSE)`).
+Code: Apache-2.0 (see `[LICENSE](LICENSE)`).
 Model weights and tokenizers: see the license bundled with each checkpoint you use.
